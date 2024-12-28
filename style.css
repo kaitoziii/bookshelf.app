@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+  }
+  
+  h1, h2 {
+    color: #003366;
+  }
+  
+  #bookForm, #searchBookForm {
+    width: 50%;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  
+  #bookForm label, #searchBookForm label {
+    display: block;
+    margin-bottom: 10px;
+    color: #003366;
+  }
+  
+  #bookForm input[type="text"], 
+  #bookForm input[type="number"], 
+  #searchBookForm input[type="text"] {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+  }
+  
+  #bookForm button[type="submit"], 
+  #searchBookForm button[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #bookForm button[type="submit"]:hover, 
+  #searchBookForm button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .book-item {
+    background-color: #e6f7ff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .book-item h3, 
+  .book-item p {
+    margin: 5px 0;
+  }
+  
+  .complete-button, 
+  .incomplete-button, 
+  .delete-button, 
+  .edit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .complete-button:hover, 
+  .incomplete-button:hover, 
+  .delete-button:hover, 
+  .edit-button:hover {
+    background-color: #0056b3;
+  }

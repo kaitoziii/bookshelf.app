@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookshelf App</title>
+</head>
+<body>
+  <h1>Bookshelf App</h1>
+  
+  <form id="bookForm" data-testid="bookForm">
+                                                     
+    <label for="inputBookTitle">Judul Buku</label>
+    <input type="text" id="inputBookTitle" data-testid="bookFormTitleInput" placeholder="Masukkan judul buku" required>
+    
+    <label for="inputBookAuthor">Penulis Buku</label>
+    <input type="text" id="inputBookAuthor" data-testid="bookFormAuthorInput" placeholder="Masukkan penulis buku" required>
+    
+    <label for="inputBookYear">Tahun</label>
+    <input type="number" id="inputBookYear" data-testid="bookFormYearInput" placeholder="Masukkan tahun terbit" required>
+    
+    <label for="inputBookIsComplete">
+      <input type="checkbox" id="inputBookIsComplete" data-testid="bookFormIsCompleteCheckbox"> Selesai dibaca
+    </label>
+    
+    <button type="submit" id="submitButton" data-testid="bookFormSubmitButton">Masukkan Buku ke rak Belum selesai dibaca</button>
+  </form>
+  
+  <hr>
+  
+  <form data-testid="searchBookForm">
+    <input type="text" id="searchBookTitle" data-testid="searchBookFormTitleInput" placeholder="Cari buku...">
+    <button id="searchButton" data-testid="searchBookFormSubmitButton">Cari</button>
+  </form>
+  
+  <div id="bookshelf">
+    <h2>Belum Selesai Dibaca</h2>
+    <div id="incompleteBookshelfList" data-testid="incompleteBookList">
+      <!-- Contoh elemen buku -->
+      <div data-bookid="1" data-testid="bookItem">
+        <h3 data-testid="bookItemTitle">Judul Buku Contoh</h3>
+        <p data-testid="bookItemAuthor">Penulis: Nama Penulis</p>
+        <p data-testid="bookItemYear">Tahun: 2023</p>
+        <div>
+          <button data-testid="bookItemIsCompleteButton">Selesai dibaca</button>
+          <button data-testid="bookItemDeleteButton">Hapus</button>
+          <button data-testid="bookItemEditButton">Edit</button>
+        </div>
+      </div>
+    </div>
+    
+    <h2>Selesai Dibaca</h2>
+    <div id="completeBookshelfList" data-testid="completeBookList">
+      <!-- Contoh elemen buku -->
+      <div data-bookid="2" data-testid="bookItem">
+        <h3 data-testid="bookItemTitle">Judul Buku Selesai</h3>
+        <p data-testid="bookItemAuthor">Penulis: Nama Penulis Selesai</p>
+        <p data-testid="bookItemYear">Tahun: 2022</p>
+        <div>
+          <button data-testid="bookItemIsCompleteButton">Belum selesai dibaca</button>
+          <button data-testid="bookItemDeleteButton">Hapus</button>
+          <button data-testid="bookItemEditButton">Edit</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookshelf App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #bookForm {
+      width: 50%;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #bookForm label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    #bookForm input[type="text"], #bookForm input[type="number"] {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    #bookForm button[type="submit"] {
+      width: 100%;
+      height: 40px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #bookForm button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    #searchBookForm {
+      width: 50%;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #searchBookForm input[type="text"] {
+      width: 80%;
+      height: 40px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    #searchBookForm button[type="button"] {
+      width: 20%;
+      height: 40px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+#searchBookForm button[type="button"]:hover{
+  background-color: #3e8e41;
+}     
+  
