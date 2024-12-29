@@ -129,4 +129,73 @@ form.addEventListener('submit', (event) => {
   const title = document.getElementById('inputBookTitle').value;
   const author = document.getElementById('inputBookAuthor').value;
   const year = document.getElementById('inputBookYear').value;
-  const isComplete = document.getElementById})
+  const isComplete = document.getElementById('inputBookIsComplete').checked;
+
+  if (!title || !author || !year) {
+    alert('Semua kolom harus diisi!');
+    return;
+  }
+
+  if (isEditing) {
+    const book = books.find((b) => b.id === editingBookId);
+    if (book) {
+      book.title = title;
+      book.author = author;
+      book.year = year;
+      book.isComplete = isComplete;
+      alert('Buku berhasil diperbarui!');
+    }
+    isEditing = false;
+    editingBookId = null;
+    document.getElementById('submitButton').innerText = 'Masukkan Buku ke rak Belum selesai dibaca';
+  } else {
+    const book = generateBookObject(generateId(), title, author, year, isComplete);
+    addBookToLibrary(book);
+  }
+
+  form.reset();
+  document.dispatchEvent(new Event(RENDER_EVENT));
+});
+
+document.getElementById('searchButton').addEventListener('click', () => {
+  const query = document.getElementById('searchBookTitle').value.toLowerCase();
+  const filteredBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(query)
+  );
+
+  if (filteredBooks.length === 0) {
+    alert('Buku tidak ditemukan!');
+    return;
+  }
+
+  renderBooks(filteredBooks);
+});
+
+document.addEventListener(RENDER_EVENT, renderBooks);
+
+
+function saveData() {
+  const parsed = JSON.stringify(books);
+  localStorage.setItem('books', parsed);
+}
+
+function loadDataFromStorage() {
+  const serializedData = localStorage.getItem('books');
+  let data = JSON.parse(serializedData);
+
+  if (data !== null) {
+    for (const book of data) {
+      books.push(book);
+    }
+  }
+
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  loadDataFromStorage();
+});
+
+document.addEventListener(RENDER_EVENT, function () {
+  saveData();
+});
